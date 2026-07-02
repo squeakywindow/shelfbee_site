@@ -1,0 +1,167 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+
+const steps = [
+  {
+    n: 1,
+    title: "Enable the extension",
+    body: "Open Settings → Safari → Extensions and switch on ShelfBee. On iOS this is in the Safari app; on Mac it's in Safari's Extensions preferences.",
+  },
+  {
+    n: 2,
+    title: "Add your libraries",
+    body: "Click the 🐝 toolbar icon and search for every library you belong to. Star a favorite to float it to the top of your list.",
+  },
+  {
+    n: 3,
+    title: "Browse as usual",
+    body: "Open any book page on Amazon or Goodreads. ShelfBee checks your libraries' Libby collections and shows availability right at the top.",
+  },
+  {
+    n: 4,
+    title: "Borrow in one tap",
+    body: "Available now, on hold, or coming soon — tap through to Libby to check it out, place a hold, or join the pre-release line.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Do I need a Libby account?",
+    a: "You need a library card that works with Libby. ShelfBee doesn't create accounts or store your card numbers — it hands off to Libby for the actual borrowing.",
+  },
+  {
+    q: "Which sites does ShelfBee work on?",
+    a: "Amazon and Goodreads book pages. ShelfBee checks availability the moment you land on a book.",
+  },
+  {
+    q: "Does ShelfBee cost anything?",
+    a: "No. ShelfBee is free, with no account required.",
+  },
+];
+---
+
+<BaseLayout title="How it works" description="How to set up ShelfBee in Safari and start checking library availability.">
+  <div class="wrap">
+    <header class="page-head">
+      <p class="eyebrow">Setup</p>
+      <h1>How it works</h1>
+      <p class="sub">Four steps from install to your first borrow.</p>
+    </header>
+
+    <section class="steps">
+      {steps.map((s) => (
+        <div class="step">
+          <div class="num">{s.n}</div>
+          <div>
+            <h4>{s.title}</h4>
+            <p>{s.body}</p>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <section class="faq">
+      <h2>Common questions</h2>
+      <FaqAccordion items={faqs} />
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 40px 60px;
+  }
+
+  .page-head {
+    margin-bottom: 40px;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    color: var(--brand-tan);
+    letter-spacing: 0.04em;
+    margin: 0 0 12px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: var(--fs-title);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+    font-weight: var(--fw-bold);
+  }
+
+  .sub {
+    font-size: var(--fs-subhead);
+    line-height: 1.5;
+    color: var(--brand-plum-2);
+    margin: 0;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .step {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    background: #fff;
+    border: 1px solid var(--brand-line);
+    border-radius: var(--r-card);
+    padding: 22px;
+  }
+
+  .num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--brand-cream-2);
+    border: 1px solid var(--brand-line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: var(--fs-name);
+    font-weight: var(--fw-bold);
+    color: var(--brand-sunset-2);
+    flex-shrink: 0;
+  }
+
+  .step h4 {
+    font-size: var(--fs-subhead);
+    margin: 0 0 6px;
+    font-weight: var(--fw-semibold);
+  }
+
+  .step p {
+    font-size: var(--fs-body);
+    line-height: 1.5;
+    color: var(--brand-plum-2);
+    margin: 0;
+  }
+
+  .faq h2 {
+    font-size: var(--fs-heading);
+    margin: 0 0 16px;
+    font-weight: var(--fw-semibold);
+  }
+
+  @media (max-width: 640px) {
+    .wrap {
+      padding: 20px 20px 40px;
+    }
+    .step {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+</style>

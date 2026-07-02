@@ -1,0 +1,50 @@
+/* ShelfBee — Spacing, radii, shadows, borders
+   Product radii are small and Apple-native (4–10px). Brand surfaces (icon
+   tiles, marketing cards) round much harder (20–22px, 22.5% squircle). */
+
+:root {
+  /* spacing scale — drawn from the extension's real gaps */
+  --sp-1: 2px;
+  --sp-2: 4px;
+  --sp-3: 6px;
+  --sp-4: 8px;
+  --sp-5: 12px;
+  --sp-6: 14px;
+  --sp-7: 20px;
+  --sp-8: 28px;
+  --sp-9: 44px;
+
+  /* radii — product */
+  --r-xs: 4px;      /* move buttons */
+  --r-sm: 5px;      /* format badge */
+  --r-md: 6px;      /* action buttons, tooltip */
+  --r-lg: 8px;      /* input, list row */
+  --r-xl: 10px;     /* banner */
+
+  /* radii — brand */
+  --r-card: 20px;   /* marketing cards */
+  --r-panel: 22px;  /* large panels */
+  --r-tile: 22.5%;  /* app-icon squircle */
+
+  /* control sizing */
+  --popup-width: 340px;
+  --hit-min: 44px;
+
+  /* borders */
+  --bw: 1px;
+  --bw-strong: 2px;
+
+  /* shadows — product (subtle, functional) */
+  --shadow-pop: 0 8px 28px rgba(0, 0, 0, 0.16);
+  --shadow-tip: 0 4px 14px rgba(0, 0, 0, 0.22);
+  --focus-ring: 0 0 0 3px var(--p-accent-ring);
+
+  /* shadows — brand (warm, lifted) */
+  --shadow-tile: 0 18px 40px rgba(255, 77, 109, 0.28), inset 0 2px 1px rgba(255, 255, 255, 0.45);
+  --shadow-card: 0 10px 24px rgba(43, 33, 80, 0.10);
+
+  /* motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --dur-fast: 0.12s; /* @kind other */
+  --dur: 0.15s; /* @kind other */
+}

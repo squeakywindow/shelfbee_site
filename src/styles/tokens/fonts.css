@@ -1,0 +1,6 @@
+/* ShelfBee — Fonts
+   Brand type: Space Grotesk (display/UI) + Space Mono (labels, meta, hex, code).
+   Loaded from Google Fonts CDN. Product/extension UI itself uses the native
+   Apple system stack (see typography.css --font-system) and ships no webfont. */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');

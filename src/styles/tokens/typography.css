@@ -1,0 +1,40 @@
+/* ShelfBee — Typography
+   Brand voice speaks in Space Grotesk (geometric, friendly-modern) with
+   Space Mono for labels, meta, hex values and any "spec sheet" text.
+   The extension UI speaks native Apple system — same font Safari uses. */
+
+:root {
+  /* families */
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-system: -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', sans-serif;
+
+  /* weights */
+  --fw-regular: 400; /* @kind font */
+  --fw-medium: 500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold: 700; /* @kind font */
+
+  /* brand display scale */
+  --fs-hero: 40px;      /* spec-sheet H1 */
+  --fs-title: 28px;
+  --fs-heading: 20px;
+  --fs-subhead: 17px;
+
+  /* product / UI scale (matches extension) */
+  --fs-body: 14px;      /* popup base */
+  --fs-name: 13px;      /* library name, toggle */
+  --fs-label: 12px;     /* tagline, hints */
+  --fs-meta: 11px;      /* eyebrow labels, system name */
+  --fs-micro: 10px;
+
+  /* section eyebrow: 11px bold uppercase tracked — used everywhere in the UI */
+  --eyebrow-size: 11px;
+  --eyebrow-tracking: 0.06em;
+
+  --lh-tight: 1.2; /* @kind font */
+  --lh-body: 1.45; /* @kind font */
+  --lh-relaxed: 1.6; /* @kind font */
+
+  --tracking-display: -0.02em; /* @kind font */
+}

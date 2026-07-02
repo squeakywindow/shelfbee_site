@@ -1,0 +1,109 @@
+/* ShelfBee — Color tokens
+   Two palettes live side by side:
+   1. BRAND  — the bee: warm sunset, honey, ink, cream. Marketing, app icon,
+      onboarding, decks, anything with personality.
+   2. PRODUCT — the extension UI is deliberately native-Apple so it disappears
+      into Safari / Amazon / Goodreads. System grays + iOS system accent.
+   3. STATUS  — Libby availability states. The functional heart of the product,
+      shared by popup and banner, tuned for light AND dark. */
+
+:root {
+  color-scheme: light dark;
+
+  /* ---- Brand : sunset ---- */
+  --brand-sunset-1: #FFD23F;   /* honey gold  0%  */
+  --brand-sunset-2: #FF8A3D;   /* amber       46% */
+  --brand-sunset-3: #FF4D6D;   /* rose        100%*/
+  --brand-sunset: linear-gradient(140deg, #FFD23F 0%, #FF8A3D 46%, #FF4D6D 100%); /* @kind color */
+
+  /* ---- Brand : core marks ---- */
+  --brand-ink: #211B19;        /* bee body + antennae, brand black */
+  --brand-honey: #FFC23D;      /* bee stripes, star-favorite */
+  --brand-wing: #FFFFFF;       /* wings / book pages */
+
+  /* ---- Brand : surfaces ---- */
+  --brand-cream: #F7F3EC;      /* primary warm page */
+  --brand-cream-2: #FBF6EC;    /* icon cream tile */
+  --brand-peach-1: #FDE7D6;
+  --brand-peach-2: #FBD9C4;
+  --brand-line: #ECE4D6;       /* warm hairline on cream */
+  --brand-line-2: #E6DDCD;
+
+  /* ---- Brand : ink-on-cream text ramp ---- */
+  --brand-plum: #2B2150;       /* headings on cream */
+  --brand-plum-2: #4B4568;     /* body on cream */
+  --brand-plum-3: #7C7690;     /* meta on cream */
+  --brand-tan: #9A8F7E;        /* mono captions on cream */
+
+  /* ---- Brand : alternate icon accents ---- */
+  --brand-magenta: #FF5FA2;
+  --brand-magenta-2: #E94CC8;
+  --brand-coral: #FF7A45;
+  --brand-coral-2: #FF5B6E;
+
+  /* ---- Product : neutrals (light) ---- */
+  --p-bg: #FFFFFF;
+  --p-bg-raised: #F7FAFA;      /* banner surface */
+  --p-fg: #0F1111;            /* banner text */
+  --p-fg-strong: #1C1C1E;
+  --p-muted: #6E6E73;         /* secondary label */
+  --p-muted-2: #8E8E93;       /* tertiary / disabled */
+  --p-border: #D2D2D7;
+  --p-border-2: #D5D9D9;      /* banner border */
+  --p-idle: #B0B0B5;          /* idle star / control */
+
+  /* ---- Product : accent (iOS system blue) ---- */
+  --p-accent: #007AFF;
+  --p-accent-tint: rgba(0, 122, 255, 0.08);   /* row hover */
+  --p-accent-ring: rgba(0, 122, 255, 0.15);   /* focus ring */
+
+  /* ---- Product : overlays ---- */
+  --p-tooltip-bg: rgba(28, 28, 30, 0.92);
+  --p-tooltip-fg: #FFFFFF;
+
+  /* ---- Status : Libby availability (light) ---- */
+  --status-available: #137333;  --status-available-orb: #34C759;   /* in, borrowable now */
+  --status-hold:      #7A5B00;  --status-hold-orb:      #FFCC00;   /* checked out, holdable */
+  --status-prerelease:#007AFF;  --status-prerelease-orb:#007AFF;   /* coming soon */
+  --status-error:     #A3261A;  --status-error-orb:     #FF3B30;   /* lookup failed */
+  --status-missing:   #555555;  --status-missing-orb:   #8E8E93;   /* not in catalog */
+
+  --star-idle: #B0B0B5;
+  --star-hover: #FF9500;
+  --star-on: #FFCC00;
+
+  /* ---- Semantic aliases (default = product/light) ---- */
+  --surface: var(--p-bg);
+  --surface-raised: var(--p-bg-raised);
+  --text: var(--p-fg);
+  --text-muted: var(--p-muted);
+  --text-faint: var(--p-muted-2);
+  --border: var(--p-border);
+  --accent: var(--p-accent);
+  --accent-tint: var(--p-accent-tint);
+  --danger: var(--status-error-orb);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --p-bg: #1C1C1E;
+    --p-bg-raised: #1C1C1E;
+    --p-fg: #F2F2F7;
+    --p-fg-strong: #F2F2F7;
+    --p-muted: #98989D;
+    --p-muted-2: #8E8E93;
+    --p-border: #3A3A3C;
+    --p-border-2: #3A3A3C;
+    --p-idle: #636366;
+
+    --p-accent: #4EA1FF;
+    --p-accent-tint: rgba(78, 161, 255, 0.12);
+    --p-accent-ring: rgba(78, 161, 255, 0.25);
+
+    --status-available: #A6E3B1;  --status-available-orb: #30D158;
+    --status-hold:      #FFD66B;  --status-hold-orb:      #FFD60A;
+    --status-prerelease:#4EA1FF;  --status-prerelease-orb:#4EA1FF;
+    --status-error:     #FFB3A8;  --status-error-orb:     #FF453A;
+    --status-missing:   #C7C7CC;  --status-missing-orb:   #98989D;
+  }
+}

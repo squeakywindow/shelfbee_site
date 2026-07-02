@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" overflow="visible">
+  <defs>
+    <clipPath id="beeCapFill"><rect x="170" y="158" width="60" height="152" rx="30"></rect></clipPath>
+  </defs>
+  <path d="M190,162 C178,120 168,108 150,96" fill="none" stroke="#211B19" stroke-width="9" stroke-linecap="round"></path>
+  <path d="M210,162 C222,120 232,108 250,96" fill="none" stroke="#211B19" stroke-width="9" stroke-linecap="round"></path>
+  <circle cx="150" cy="96" r="11" fill="#211B19"></circle><circle cx="250" cy="96" r="11" fill="#211B19"></circle>
+  <path d="M190,176 C110,148 60,186 78,256 C92,303 166,292 197,250 Z" fill="#ffffff" opacity="0.96"></path>
+  <path d="M210,176 C290,148 340,186 322,256 C308,303 234,292 203,250 Z" fill="#ffffff" opacity="0.96"></path>
+  <rect x="170" y="158" width="60" height="152" rx="30" fill="#211B19"></rect>
+  <g clip-path="url(#beeCapFill)"><rect x="160" y="186" width="80" height="16" fill="#FFC23D"></rect><rect x="160" y="227" width="80" height="16" fill="#FFC23D"></rect><rect x="160" y="268" width="80" height="16" fill="#FFC23D"></rect></g>
+</svg>

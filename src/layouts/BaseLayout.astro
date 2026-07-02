@@ -1,0 +1,217 @@
+---
+import "../styles/global.css";
+import MobileNav from "../components/MobileNav.astro";
+import { APP_STORE_URL } from "../config";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "ShelfBee checks Libby availability for any book you're browsing on Amazon or Goodreads." } = Astro.props;
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/how-it-works", label: "How it works" },
+  { href: "/legal", label: "Privacy" },
+  { href: "/contact", label: "Contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/assets/app-icon.svg" type="image/svg+xml" />
+  <title>{title} · ShelfBee</title>
+  <meta name="description" content={description} />
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <a class="lock" href="/" aria-label="ShelfBee home">
+        <span class="tile"><img src="/assets/mark-bee.svg" alt="" /></span>
+        <span class="wm">Shelf<b>Bee</b></span>
+      </a>
+      <nav class="links" aria-label="Primary">
+        {navLinks.map((link) => (
+          <a href={link.href} class:list={{ active: currentPath === link.href }}>{link.label}</a>
+        ))}
+      </nav>
+      <a class="cta" href={APP_STORE_URL}>
+        <img src="/assets/toolbar-glyph-white.svg" alt="" width="16" height="16" />
+        Add to Safari
+      </a>
+      <MobileNav navLinks={navLinks} currentPath={currentPath} />
+    </header>
+
+    <main class="content">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <a class="lock" href="/" aria-label="ShelfBee home">
+          <span class="tile tile-sm"><img src="/assets/mark-bee.svg" alt="" /></span>
+          <span class="wm wm-sm">Shelf<b>Bee</b></span>
+        </a>
+        <div class="footer-links">
+          <a href="/how-it-works">How it works</a>
+          <a href="/legal">Privacy</a>
+          <a href="/legal">Terms</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <p class="copyright">© {new Date().getFullYear()} ShelfBee. Not affiliated with Libby, OverDrive, Amazon, or Goodreads.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+
+<style>
+  .page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .content {
+    flex: 1;
+  }
+
+  .nav,
+  .footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .lock {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .tile {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--r-tile);
+    background: var(--brand-sunset);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 14px rgba(255, 77, 109, 0.24);
+    flex-shrink: 0;
+  }
+
+  .tile img {
+    width: 86%;
+    height: 86%;
+  }
+
+  .tile-sm {
+    width: 30px;
+    height: 30px;
+  }
+
+  .wm {
+    font-size: 22px;
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .wm b {
+    color: var(--brand-sunset-2);
+    font-weight: var(--fw-bold);
+  }
+
+  .wm-sm {
+    font-size: 17px;
+  }
+
+  .links {
+    margin-left: auto;
+    display: flex;
+    gap: 24px;
+    font-size: var(--fs-body);
+    font-weight: var(--fw-medium);
+    color: var(--brand-plum-2);
+  }
+
+  .links a.active {
+    color: var(--brand-plum);
+    font-weight: var(--fw-semibold);
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--brand-sunset);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-subhead);
+    border: 0;
+    border-radius: 12px;
+    padding: 11px 20px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.28);
+    white-space: nowrap;
+  }
+
+  .footer {
+    border-top: 1px solid var(--brand-line);
+    margin-top: var(--sp-9);
+  }
+
+  .footer-inner {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-links {
+    margin-left: auto;
+    display: flex;
+    gap: 20px;
+    font-size: var(--fs-label);
+    font-weight: var(--fw-medium);
+    color: var(--brand-plum-2);
+  }
+
+  .copyright {
+    flex-basis: 100%;
+    font-family: var(--font-mono);
+    font-size: var(--fs-micro);
+    color: var(--brand-tan);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .nav,
+    .footer-inner {
+      padding: 0 20px;
+    }
+    .links {
+      display: none;
+    }
+    .footer-links {
+      margin-left: 0;
+    }
+  }
+</style>

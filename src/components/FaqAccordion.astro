@@ -1,0 +1,92 @@
+---
+interface Faq {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  items: Faq[];
+}
+
+const { items } = Astro.props;
+---
+
+<faq-accordion class="faq-accordion">
+  {items.map((item, i) => (
+    <div class="faq-item">
+      <button class="faq-q" type="button" aria-expanded="false" aria-controls={`faq-a-${i}`}>
+        <span>{item.q}</span>
+        <span class="chevron" aria-hidden="true">▾</span>
+      </button>
+      <div id={`faq-a-${i}`} class="faq-a" hidden>
+        <p>{item.a}</p>
+      </div>
+    </div>
+  ))}
+</faq-accordion>
+
+<script>
+  class FaqAccordion extends HTMLElement {
+    connectedCallback() {
+      this.querySelectorAll<HTMLButtonElement>(".faq-q").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = button.closest(".faq-item");
+          const answer = item?.querySelector<HTMLElement>(".faq-a");
+          if (!answer) return;
+
+          const isOpen = button.getAttribute("aria-expanded") === "true";
+          button.setAttribute("aria-expanded", String(!isOpen));
+          answer.hidden = isOpen;
+          item?.classList.toggle("open", !isOpen);
+        });
+      });
+    }
+  }
+
+  customElements.define("faq-accordion", FaqAccordion);
+</script>
+
+<style>
+  .faq-item {
+    border-top: 1px solid var(--brand-line);
+  }
+
+  .faq-q {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    text-align: left;
+    padding: 18px 0;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--fs-name);
+    font-weight: var(--fw-semibold);
+    color: var(--brand-plum);
+  }
+
+  .chevron {
+    flex-shrink: 0;
+    color: var(--brand-tan);
+    transition: transform var(--dur) var(--ease);
+  }
+
+  .faq-item.open .chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-a {
+    padding: 0 0 18px;
+  }
+
+  .faq-a p {
+    font-size: var(--fs-name);
+    line-height: 1.5;
+    color: var(--brand-plum-2);
+    margin: 0;
+  }
+</style>

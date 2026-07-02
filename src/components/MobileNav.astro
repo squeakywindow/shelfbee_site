@@ -1,0 +1,171 @@
+---
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  navLinks: NavLink[];
+  currentPath: string;
+}
+
+const { navLinks, currentPath } = Astro.props;
+---
+
+<mobile-nav class="mobile-nav">
+  <button class="toggle" type="button" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
+    <span class="bars" aria-hidden="true"></span>
+  </button>
+  <nav id="mobile-nav-panel" class="panel" aria-label="Primary" hidden>
+    {navLinks.map((link) => (
+      <a href={link.href} class:list={{ active: currentPath === link.href }}>{link.label}</a>
+    ))}
+  </nav>
+</mobile-nav>
+
+<script>
+  class MobileNav extends HTMLElement {
+    connectedCallback() {
+      const toggle = this.querySelector<HTMLButtonElement>(".toggle");
+      const panel = this.querySelector<HTMLElement>(".panel");
+      if (!toggle || !panel) return;
+
+      const close = () => {
+        panel.hidden = true;
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open menu");
+        this.classList.remove("open");
+      };
+
+      const open = () => {
+        panel.hidden = false;
+        toggle.setAttribute("aria-expanded", "true");
+        toggle.setAttribute("aria-label", "Close menu");
+        this.classList.add("open");
+      };
+
+      toggle.addEventListener("click", () => {
+        if (panel.hidden) open();
+        else close();
+      });
+
+      panel.addEventListener("click", (event) => {
+        if ((event.target as HTMLElement).tagName === "A") close();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !panel.hidden) close();
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!panel.hidden && !this.contains(event.target as Node)) close();
+      });
+    }
+  }
+
+  customElements.define("mobile-nav", MobileNav);
+</script>
+
+<style>
+  .mobile-nav {
+    display: none;
+    position: relative;
+  }
+
+  .toggle {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--brand-line);
+    border-radius: var(--r-lg);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .bars,
+  .bars::before,
+  .bars::after {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--brand-plum);
+    border-radius: 2px;
+    transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+  }
+
+  .bars {
+    position: relative;
+  }
+
+  .bars::before,
+  .bars::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .bars::before {
+    top: -6px;
+  }
+
+  .bars::after {
+    top: 6px;
+  }
+
+  .mobile-nav.open .bars {
+    background: transparent;
+  }
+
+  .mobile-nav.open .bars::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .mobile-nav.open .bars::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: #fff;
+    border: 1px solid var(--brand-line);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-pop);
+    padding: 8px;
+    min-width: 180px;
+    z-index: 20;
+  }
+
+  .panel[hidden] {
+    display: none;
+  }
+
+  .panel a {
+    padding: 10px 12px;
+    border-radius: var(--r-md);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-medium);
+    color: var(--brand-plum-2);
+  }
+
+  .panel a.active {
+    color: var(--brand-plum);
+    font-weight: var(--fw-semibold);
+    background: var(--brand-cream);
+  }
+
+  @media (max-width: 640px) {
+    .mobile-nav {
+      display: block;
+    }
+  }
+</style>

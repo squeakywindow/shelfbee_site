@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Contact" description="Get in touch with the ShelfBee team.">
+  <div class="wrap">
+    <header class="page-head">
+      <p class="eyebrow">Contact</p>
+      <h1>Get in touch</h1>
+      <p class="sub">This page is a placeholder — contact details are coming soon.</p>
+    </header>
+
+    <section class="card">
+      <p class="placeholder">Content coming soon.</p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 40px 60px;
+  }
+
+  .page-head {
+    margin-bottom: 40px;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    color: var(--brand-tan);
+    letter-spacing: 0.04em;
+    margin: 0 0 12px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: var(--fs-title);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+    font-weight: var(--fw-bold);
+  }
+
+  .sub {
+    font-size: var(--fs-subhead);
+    line-height: 1.5;
+    color: var(--brand-plum-2);
+    margin: 0;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--brand-line);
+    border-radius: var(--r-card);
+    padding: 26px 28px;
+  }
+
+  .placeholder {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    color: var(--brand-tan);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .wrap {
+      padding: 20px 20px 40px;
+    }
+  }
+</style>
