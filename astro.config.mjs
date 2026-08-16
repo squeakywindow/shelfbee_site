@@ -4,7 +4,7 @@ export default defineConfig({
   site: "https://shelfbee.app",
   outDir: "./docs",
   build: {
-    format: "file",
+    format: "preserve",
   },
   vite: {
     server: {
