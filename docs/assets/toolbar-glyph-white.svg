@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 400 400">
+  <defs>
+    <mask id="slit">
+      <rect x="0" y="0" width="400" height="400" fill="#fff"></rect>
+      <rect x="166" y="199" width="68" height="9" rx="4.5" fill="#000"></rect>
+      <rect x="166" y="232" width="68" height="9" rx="4.5" fill="#000"></rect>
+      <rect x="166" y="265" width="68" height="9" rx="4.5" fill="#000"></rect>
+      <rect x="159" y="180" width="7" height="108" rx="3.5" fill="#000"></rect>
+      <rect x="234" y="180" width="7" height="108" rx="3.5" fill="#000"></rect>
+    </mask>
+  </defs>
+  <g fill="#FFFFFF" stroke="#FFFFFF" mask="url(#slit)">
+    <path d="M190,162 C178,120 168,108 150,96" fill="none" stroke-width="13" stroke-linecap="round"></path>
+    <path d="M210,162 C222,120 232,108 250,96" fill="none" stroke-width="13" stroke-linecap="round"></path>
+    <circle cx="150" cy="96" r="13" stroke="none"></circle><circle cx="250" cy="96" r="13" stroke="none"></circle>
+    <path d="M190,176 C110,148 60,186 78,256 C92,303 166,292 197,250 Z" stroke="none"></path>
+    <path d="M210,176 C290,148 340,186 322,256 C308,303 234,292 203,250 Z" stroke="none"></path>
+    <rect x="170" y="158" width="60" height="152" rx="30" stroke="none"></rect>
+  </g>
+</svg>
