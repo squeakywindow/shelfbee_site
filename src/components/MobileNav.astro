@@ -18,7 +18,7 @@ const { navLinks, currentPath } = Astro.props;
   </button>
   <nav id="mobile-nav-panel" class="panel" aria-label="Primary" hidden>
     {navLinks.map((link) => (
-      <a href={link.href} class:list={{ active: currentPath === link.href }}>{link.label}</a>
+      <a href={link.href} class:list={{ active: currentPath === link.href || currentPath + ".html" === link.href }}>{link.label}</a>
     ))}
   </nav>
 </mobile-nav>

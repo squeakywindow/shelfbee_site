@@ -38,7 +38,7 @@ const currentPath = Astro.url.pathname;
       </a>
       <nav class="links" aria-label="Primary">
         {navLinks.map((link) => (
-          <a href={link.href} class:list={{ active: currentPath === link.href }}>{link.label}</a>
+          <a href={link.href} class:list={{ active: currentPath === link.href || currentPath + ".html" === link.href }}>{link.label}</a>
         ))}
       </nav>
       <a class="cta" href={APP_STORE_URL} aria-label="Download ShelfBee on the App Store">
