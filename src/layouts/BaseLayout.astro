@@ -12,9 +12,9 @@ const { title, description = "ShelfBee checks Libby availability for any book yo
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/how-it-works", label: "How it works" },
-  { href: "/legal", label: "Privacy" },
-  { href: "/contact", label: "Contact" },
+  { href: "/privacy.html", label: "Privacy" },
+  { href: "/terms.html", label: "Terms" },
+  { href: "/support.html", label: "Support" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -41,9 +41,8 @@ const currentPath = Astro.url.pathname;
           <a href={link.href} class:list={{ active: currentPath === link.href }}>{link.label}</a>
         ))}
       </nav>
-      <a class="cta" href={APP_STORE_URL}>
-        <img src="/assets/toolbar-glyph-white.svg" alt="" width="16" height="16" />
-        Add to Safari
+      <a class="cta" href={APP_STORE_URL} aria-label="Download ShelfBee on the App Store">
+        <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40" />
       </a>
       <MobileNav navLinks={navLinks} currentPath={currentPath} />
     </header>
@@ -59,10 +58,9 @@ const currentPath = Astro.url.pathname;
           <span class="wm wm-sm">Shelf<b>Bee</b></span>
         </a>
         <div class="footer-links">
-          <a href="/how-it-works">How it works</a>
-          <a href="/legal#privacy">Privacy</a>
-          <a href="/legal#terms">Terms</a>
-          <a href="/contact">Contact</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/support.html">Support</a>
         </div>
         <p class="copyright">© {new Date().getFullYear()} ShelfBee. Not affiliated with Libby, OverDrive, Amazon, or Goodreads.</p>
       </div>
@@ -157,18 +155,16 @@ const currentPath = Astro.url.pathname;
   .cta {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: var(--brand-sunset);
-    color: #fff;
-    font-family: var(--font-display);
-    font-weight: var(--fw-semibold);
-    font-size: var(--fs-subhead);
-    border: 0;
-    border-radius: 12px;
-    padding: 11px 20px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.28);
-    white-space: nowrap;
+    line-height: 0;
+    transition: opacity var(--dur) var(--ease);
+  }
+
+  .cta:hover {
+    opacity: 0.85;
+  }
+
+  .cta img {
+    display: block;
   }
 
   .footer {

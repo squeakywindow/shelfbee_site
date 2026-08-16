@@ -5,7 +5,8 @@
       "Bash(mkdir -p /private/tmp/claude-504/-Volumes-docker-config-shelfbee-sites/8457825c-e6f5-4115-97e7-cb181c80f374/scratchpad/shelfbee-handoff)",
       "Bash(unzip -o \"/Users/tim.dennis/Downloads/ShelfBee-handoff.zip\" -d .)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" --max-time 5 http://localhost:4321/)",
-      "Bash(bash -c ' *)"
+      "Bash(bash -c ' *)",
+      "Bash(npm run *)"
     ]
   }
 }

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
 import { APP_STORE_URL } from "../config";
 
 const values = [
@@ -34,26 +35,35 @@ const steps = [
   {
     n: 3,
     title: "Browse as usual",
-    body: "Open any book on Amazon or Goodreads — availability appears at the top.",
+    body: "Open any book on a supported website — availability appears at the top.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Do I need a Libby account?",
+    a: "You need a library card that works with Libby. ShelfBee doesn't create accounts or store your card numbers — it hands off to Libby for the actual borrowing.",
+  },
+  {
+    q: "Which sites does ShelfBee work on?",
+    a: "Amazon, Goodreads, and TheStoryGraph book pages. More sites are being tested and added frequently",
   },
 ];
 ---
 
-<BaseLayout title="Read more, wait less">
+<BaseLayout title="See if your library has it">
   <div class="wrap">
     <section class="hero">
       <div class="copy">
-        <p class="eyebrow">Safari extension</p>
+        <p class="eyebrow">A Safari extension</p>
         <h1>Read more,<br /><span class="u">wait less.</span></h1>
         <p class="sub">
           ShelfBee checks your library's digital collection the moment you land on a book. Find your next read quicker.
         </p>
         <div class="actions">
-          <a class="cta" href={APP_STORE_URL}>
-            <img src="/assets/toolbar-glyph-white.svg" alt="" width="16" height="16" />
-            Add to Safari
+          <a class="cta" href={APP_STORE_URL} aria-label="Download ShelfBee on the App Store">
+            <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="150" height="50" />
           </a>
-          <a class="ghost" href="/how-it-works">See how it works →</a>
         </div>
       </div>
       <div class="heroart">
@@ -83,6 +93,11 @@ const steps = [
           </div>
         ))}
       </div>
+    </section>
+
+    <section class="faq">
+      <h2>Common questions</h2>
+      <FaqAccordion items={faqs} />
     </section>
   </div>
 </BaseLayout>
@@ -147,24 +162,16 @@ const steps = [
   .cta {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: var(--brand-sunset);
-    color: #fff;
-    font-family: var(--font-display);
-    font-weight: var(--fw-semibold);
-    font-size: var(--fs-subhead);
-    border: 0;
-    border-radius: 12px;
-    padding: 11px 20px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.28);
-    white-space: nowrap;
+    line-height: 0;
+    transition: opacity var(--dur) var(--ease);
   }
 
-  .ghost {
-    font-size: var(--fs-body);
-    font-weight: var(--fw-semibold);
-    color: var(--brand-plum-2);
+  .cta:hover {
+    opacity: 0.85;
+  }
+
+  .cta img {
+    display: block;
   }
 
   .heroart {
@@ -273,6 +280,17 @@ const steps = [
     line-height: 1.5;
     color: var(--brand-plum-3);
     margin: 0;
+  }
+
+  /* faq */
+  .faq {
+    margin-top: 48px;
+  }
+
+  .faq h2 {
+    font-size: var(--fs-heading);
+    margin: 0 0 16px;
+    font-weight: var(--fw-semibold);
   }
 
   @media (max-width: 720px) {

@@ -1,0 +1,161 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+
+const faqs = [
+  {
+    q: "How do I enable ShelfBee in Safari?",
+    a: "On iPhone or iPad: open the Settings app → Safari → Extensions → turn on ShelfBee. On Mac: open Safari → Settings → Extensions → check ShelfBee. You may also need to grant permission for it to run on specific sites the first time you visit them.",
+  },
+  {
+    q: "Which libraries does ShelfBee support?",
+    a: "ShelfBee works with any public library that uses OverDrive or Libby for digital lending — which covers most public library systems in the US, Canada, UK, and Australia. Set your library in the ShelfBee app and it'll handle the rest.",
+  },
+  {
+    q: "Why is a book showing as unavailable when I can see it in Libby?",
+    a: 'Library catalog data can take a few minutes to sync. Try refreshing the page, or tap the ShelfBee icon in Safari\'s toolbar to re-check. If the discrepancy continues, <a href="mailto:support@shelfbee.app">let us know</a> and include the book\'s title.',
+  },
+  {
+    q: "Does ShelfBee work on iPad?",
+    a: "Yes. ShelfBee is a universal app and works on iPhone, iPad, and Mac. Enable it in Safari's extension settings on each device.",
+  },
+  {
+    q: "Does ShelfBee collect my browsing data?",
+    a: 'No. ShelfBee reads only the book title and ISBN from supported pages to check library availability. That data goes from your device directly to your library\'s servers — not to us. We have no backend and collect no personal data. Read the full <a href="/privacy.html">privacy policy</a> for details.',
+  },
+  {
+    q: "Which websites does ShelfBee work on?",
+    a: 'Version 1 supports Amazon, Goodreads and StoryGraph. More sites — including Barnes &amp; Noble, Google Books, and others — are on the roadmap. If there\'s a site you\'d like supported, <a href="mailto:support@shelfbee.app">let us know</a>.',
+  },
+  {
+    q: "How do I change my library?",
+    a: "Open the ShelfBee extension within Safari on your device. You can search for and select a new library there. The change takes effect immediately across the extension.",
+  },
+];
+---
+
+<BaseLayout title="Support" description="Get help with ShelfBee. Browse FAQs or reach us at support@shelfbee.app.">
+  <div class="wrap">
+    <header class="page-head">
+      <p class="eyebrow">Help</p>
+      <h1>Support</h1>
+      <p class="sub">We're a small team and we read every message. We'll respond as quickly as we can.</p>
+    </header>
+
+    <section class="card contact-card">
+      <div class="contact-info">
+        <h2>Email support</h2>
+        <p>For bugs, feature requests, or anything else — reach us directly.</p>
+      </div>
+      <a class="email-btn" href="mailto:support@shelfbee.app">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.25" />
+          <path d="M1.5 5.5L8 9.5L14.5 5.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" />
+        </svg>
+        support@shelfbee.app
+      </a>
+    </section>
+
+    <section class="card">
+      <h2 class="faq-title">Frequently asked questions</h2>
+      <FaqAccordion items={faqs} />
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 40px 60px;
+  }
+
+  .page-head {
+    margin-bottom: 40px;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    color: var(--brand-tan);
+    letter-spacing: 0.04em;
+    margin: 0 0 12px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: var(--fs-title);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+    font-weight: var(--fw-bold);
+  }
+
+  .sub {
+    font-size: var(--fs-subhead);
+    line-height: 1.5;
+    color: var(--brand-plum-2);
+    margin: 0;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--brand-line);
+    border-radius: var(--r-card);
+    padding: 26px 28px;
+    margin-bottom: 18px;
+  }
+
+  .contact-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .contact-info h2 {
+    font-size: var(--fs-subhead);
+    font-weight: var(--fw-semibold);
+    color: var(--brand-plum);
+    margin: 0 0 4px;
+  }
+
+  .contact-info p {
+    font-size: var(--fs-body);
+    color: var(--brand-plum-2);
+    margin: 0;
+  }
+
+  .email-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--brand-sunset);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-body);
+    border-radius: 12px;
+    padding: 11px 20px;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.28);
+  }
+
+  .faq-title {
+    font-size: var(--fs-subhead);
+    font-weight: var(--fw-semibold);
+    color: var(--brand-plum);
+    margin: 0 0 8px;
+  }
+
+  @media (max-width: 640px) {
+    .wrap {
+      padding: 20px 20px 40px;
+    }
+
+    .contact-card {
+      align-items: flex-start;
+    }
+  }
+</style>
